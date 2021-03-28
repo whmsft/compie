@@ -1,4 +1,4 @@
-#Calcy
+# Calcy
 # Python's eval() function can be limiting but calcy can't be
 
 Calcy is a python module which is made by a person who wanted to do many many calculations inside python
