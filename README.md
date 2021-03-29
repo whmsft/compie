@@ -1,7 +1,7 @@
-# Calcy
-# Python's eval() function can be limiting but calcy can't be
+# Whirlcalc
+# Python's eval() function can be limiting but WhirlCalc can't be
 
-Calcy is a python module which is made by a person who wanted to do many many calculations inside python
+WhirlCalcy is a python module which is made by a person who wanted to do many many calculations inside python
 but thought that "Why import different modules for the same work? Let's make my own one!"
 and so calcy is made..
 
