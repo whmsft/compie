@@ -1,3 +1,7 @@
+from lexer import run
+
+__all__ = ["run"]
+
 #Made with ❤️ on Python 3.8.10 by Whirlpool-Programmer
 '''
 PyCompute (c) 2021 Whirlpool-Programmer
@@ -10,7 +14,7 @@ Made by Whirlpool-Programmer
 LIST OF AVALIABLE FUNCTIONS AND CLASSES:
 
 FUNCTIONS:
-make_penguin()				added in version 1.0
+make_penguin()				added in version 1.0  >> bugfixes 2.0
 isprime(number)				added in version 2b1
 ratio(int,int)				added in version 2b1  >> bugfix 2.0
 factorial(int)				added in version 0.1b
@@ -21,7 +25,7 @@ decimal2octal(int)			added in version 1.6.3
 octal2decimal(int)			added in version 1.6.4
 hexadecimal2decimal(str)	added in version 1.6.5
 decimal2hexadecimal(int)	added in version 1.6.6
-evaluate(str)				added in version 0.1b
+evaluate(str)				added in version 0.1b  >> level up in v2.3
 
 CLASSES:
 decimal(value)				added in version 2b0
@@ -132,31 +136,44 @@ def decimal2octal(decimal):
         ctr += 1
     return octal
 
-def evaluate(command):
-        if "factorial(" in command:
-            com = command.lower()
-            fac_num_st = com.find("factorial(") + len("factorial(")
-            fac_num_ed = com.find(")")
-            fac_cmd_st = com.find("factorial(")
-            fac_cmd_ed = com.find(")")
-            fac_cmd = com[fac_cmd_st:fac_cmd_ed]
-            fac_num = com[fac_num_st:fac_num_ed]        
-            fac = factorial(int(fac_num))
-            command.replace(fac_cmd,str(fac))
-        if "fac(" in command:
-            com = command.lower()
-            fac_num_st = com.find("fac(") + len("fac(")
-            fac_num_ed = com.find(")")
-            fac_cmd_st = com.find("fac(")
-            fac_cmd_ed = com.find(")")
-            fac_cmd = com[fac_cmd_st:fac_cmd_ed]
-            fac_num = com[fac_num_st:fac_num_ed]        
-            fac = factorial(int(fac_num))
-            command.replace(fac_cmd,str(fac))
-        if "pi" in command.lower():
-            command  = command.replace("pi", str(3.141592653589793))
-        return eval(command)
-
+def evaluate(string):
+	comm = run("<{}>".format(string),string)
+	var = ""
+	for i in comm[0]:
+		i = str(i)
+		if i == "INT":
+			var = var+"0"
+		elif "INT" in i:
+			var = var+"("+i[i.find(":")+len(":"):]+")"
+		elif "FLOAT" in i:
+			var = var+"("+i[i.find(":")+len(":"):]+")"
+		elif "PLUS" in i:
+			var = var+"+"
+		elif "MINUS" in i:
+			var = var + "-"
+		elif "MUL" in i:
+			var = var+"*"
+		elif "DIV" in i:
+			var = var+"/"
+		elif "LBRAC" in i:
+			var = var+"["
+		elif "RBRAC" in i:
+			var = var+"]"
+		elif "FAC" in i:
+			var = var+"factorial"
+		elif "COMMA" in i:
+			var = var+","
+	command = var
+	if "factorial(" in command:
+		com = command.lower()
+		fac_num_st = com.find("factorial(") + len("factorial(")
+		fac_num_ed = fac_num_st+com[fac_num_st:].find(")")
+		fac_num = com[fac_num_st:fac_num_ed]
+		factor = factorial(int(fac_num))
+		command.replace(fac_num,str(factor))
+	if "pi" in command.lower():
+		command  = command.replace("pi", str(3.141592653589793))
+	return eval(command)
 
 class decimal:
 	"""
@@ -294,7 +311,7 @@ python setup.py sdist
 python setup.py bdist_wheel --universal
 python -m twine upload dist/*.*
 '''
-__version__ = "2.0"
+__version__ = "2.3"
 __author__ = 'Whirlpool-Programmer'
 __credits__ = ['Whirlpool-Programmer','Sapphire Corp.']
 pi = 3.141592653589793
