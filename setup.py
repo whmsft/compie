@@ -5,7 +5,7 @@ with open("README.md", "r",encoding='utf-8') as file:
 
 setup(
     name='compie',
-    version='2.0.1',    
+    version='2.3b0',    
     description='''A Python module made for use with numbers and data''',
     long_description=long_description,
     long_description_content_type="text/markdown",
