@@ -174,3 +174,10 @@ v1.0.0:
   > decimal2octal
   > make_penguin
 ```
+FUTURE NOTES:
+```
+> Compie GUI (with all compie features)
+> Mass
+> Cubage
+> Temperature
+```
