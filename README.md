@@ -1,4 +1,7 @@
 # Compie
+
+[![Downloads](https://pepy.tech/badge/compie/month)](https://pepy.tech/project/compie/month)
+
 ### Compie is the successor to Whirlcalc
 #### Compie is made with ❤️ on Python
 
